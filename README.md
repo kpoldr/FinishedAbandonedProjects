@@ -1,4 +1,4 @@
-# Finished Projects
+# Projects
 
 Projects that I have finished or discarded.
 
