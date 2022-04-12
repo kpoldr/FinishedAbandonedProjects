@@ -1,0 +1,15 @@
+﻿@page
+@model WebApp.Pages.Game.Victory
+
+<div class="container px-4">
+    <div class="row text-center p-5">
+        <h1>!!!   Player @(1 - BattleShip.Brain.CurrentPlayerInt + 1) won   !!!</h1>
+    </div>
+    <div class="p-4 row gx-5">
+        <div class="col text-center align-bottom">
+            <form method="post" >
+            <button type="submit" class="btn-lg btn-dark">Continue</button>
+            </form>
+        </div>
+    </div>
+</div>

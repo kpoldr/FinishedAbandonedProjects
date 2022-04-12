@@ -1,0 +1,232 @@
+﻿@page
+@using System.Drawing
+@model WebApp.Pages.BattleShip
+
+@{
+    ViewData["Title"] = "Battle Ship";
+}
+
+<div class="container">
+<div style="border-bottom: 2px solid gray;  height: 50px; width: @BattleShip.Brain.SelectedIndexY * 2" class="row " align="center">
+    <h2>@BattleShip.Info</h2>
+</div>
+
+<div class="row">
+<div class="col-md-6 pt-4" align="right">
+    <div class="col">
+        <table style="border: 1px solid black">
+            @if (BattleShip.Bombing)
+            {
+                @for (int x = 0; x < BattleShip.Brain.GameConfig.BoardSizeX; x++)
+                {
+                    <tr style="height: 50px;border: 1px solid black;">
+                        @for (int y = 0; y < BattleShip.Brain.GameConfig.BoardSizeY; y++)
+                        {
+                            var sunken = false;
+                            var ship = BattleShip.Brain.FindSelectedShip(true, x, y);
+
+                            if (ship != null)
+                            {
+                                sunken = ship.IsShipSunk(BattleShip.Brain.EnemyPlayer.Board);
+                            }
+
+                            var color = UIElements.ColorSquare(
+                                BattleShip.Brain.GetBoard(1 - BattleShip.Brain.CurrentPlayerInt)[(x, y)],
+                                true, sunken);
+
+                            <td onclick="window.location.href = '/Game/BattleShip?x=@x&y=@y&bombing=true' "style="width: 50px; cursor: pointer; border: 1px solid black; background: @color"></td>
+                        }
+                    </tr>
+                }
+            }
+            else
+            {
+                @for (int x = 0; x < BattleShip.Brain.GameConfig.BoardSizeX; x++)
+                {
+                    <tr style="height: 50px;border: 1px solid black;">
+                        @for (int y = 0; y < BattleShip.Brain.GameConfig.BoardSizeY; y++)
+                        {
+                            string color;
+
+                            if (BattleShip.ShipCords.Contains((x, y)))
+                            {
+                                if (!BattleShip.Brain.GetCurrentPlayer().AvailableCoordinates.Contains((x,y)))
+                                {
+                                    color = ColorTranslator.ToHtml(Color.Red);
+                                }
+                                else
+                                {
+                                    color = ColorTranslator.ToHtml(Color.Green);
+                                }
+                            }
+                            else if (!BattleShip.Brain.GetCurrentPlayer().AvailableCoordinates.Contains((x,y)))
+                            {
+                                if (BattleShip.Brain.GetBoard(BattleShip.PlayerNumber)[(x, y)].IsShip)
+                                {
+                                    color = ColorTranslator.ToHtml(Color.Black);
+                                }
+                                else
+                                {
+                                    color = ColorTranslator.ToHtml(Color.Gray);
+                                }
+                            }
+                            else
+                            {
+                                color = ColorTranslator.ToHtml(Color.White);
+                            }
+
+                            <td onclick="window.location.href = '/Game/BattleShip?x=@x&y=@y&bombing=false' "style="width: 50px; cursor: pointer; border: 1px solid black; background: @color"></td>
+                        }
+                    </tr>
+                }
+            }
+        </table>
+
+    </div>
+</div>
+<div class="col-md-3 pt-4">
+    <div class="col">
+        @if (BattleShip.Bombing)
+        {
+            <table class="" style="border: 1px solid black">
+                @for (int x = 0; x < BattleShip.Brain.GameConfig.BoardSizeX; x++)
+                {
+                    <tr style="height: 25px;border: 1px solid black;">
+                        @for (int y = 0; y < BattleShip.Brain.GameConfig.BoardSizeY; y++)
+                        {
+                            var sunken = false;
+                            var ship = BattleShip.Brain.FindSelectedShip(true, x, y);
+
+                            if (ship != null)
+                            {
+                                sunken = ship.IsShipSunk(BattleShip.Brain.CurPlayer.Board);
+                            }
+
+                            var color = UIElements.ColorSquare(
+                                BattleShip.Brain.GetBoard(BattleShip.Brain.CurrentPlayerInt)[(x, y)],
+                                false, sunken);
+
+                            <td style="width: 25px; cursor: pointer; border: 1px solid black; background: @color"></td>
+                        }
+                    </tr>
+                }
+            </table>
+        }
+        @if (BattleShip.Brain.GameConfig.BoardSizeY < 5)
+        {
+            BattleShip.ContainterSize = 5;
+        }
+        else
+        {
+            BattleShip.ContainterSize = BattleShip.Brain.GameConfig.BoardSizeY;
+        }
+        <div class="col-md-3 pt-3" style="width: @(25 * BattleShip.ContainterSize)px">
+            <div class="d-grid gap-2">
+                @if (BattleShip.Bombing)
+                {
+                    @if (BattleShip.Brain._bombingHistory.Count == 0)
+                    {
+                        <button type="button" class="btn btn-primary btn-dark" disabled>Undo Move</button>
+                    }
+                    else
+                    {
+                        <form asp-page-handler="UndoMove" method="post" class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-dark">Undo Move</button>
+                        </form>
+                    }
+
+                    @if (BattleShip.Brain._redoHistory.Count == 0)
+                    {
+                        <button type="button" class="btn btn-primary btn-dark" disabled>Redo Move</button>
+                    }
+                    else
+                    {
+                        <form asp-page-handler="RedoMove" method="post" class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-dark">Redo Move</button>
+                        </form>
+                    }
+
+                    <form asp-page-handler="SaveGameDb" method="post" class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-success">Save Game Db</button>
+                    </form>
+
+                    <form asp-page-handler="SaveGameJson" method="post" class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-success">Save Game Json</button>
+                    </form>
+                }
+                else
+                {
+                    if (BattleShip.ShipCords.Count == 0)
+                    {
+                        <button type="submit" class="btn btn-primary btn-primary" disabled>Rotate Ship</button>
+                    }
+                    else
+                    {
+                        <form asp-page-handler="RotateShip" method="post" class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-primary">Rotate Ship</button>
+                        </form>
+                    }
+
+                    if (BattleShip.ShipCords.Count == 0)
+                    {
+                        <button type="submit" class="btn btn-primary btn-success" disabled>Place Ship</button>
+                    }
+                    else
+                    {
+                        <form asp-page-handler="PlaceShip" method="post" class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-success">Place Ship</button>
+                        </form>
+                    }
+                }
+                <form asp-page-handler="ExitGame" method="post" class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-danger">Exit Game</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-3 pt-5">
+    <div class="col" style="width: @(25 * BattleShip.ContainterSize)px">
+        <div class="d-grid gap-2">
+            <table>
+                <thead>
+                <tr>
+                    <th>Current Player:</th>
+                    <th>@(BattleShip.Brain.CurrentPlayerInt + 1)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Number of ships</td>
+                    <td>@BattleShip.Brain.GameConfig.Ships.Count</td>
+                </tr>
+                <tr>
+                    <td>Ship placement rule:</td>
+                    <td>@BattleShip.Brain.GameConfig.EShipTouchRule</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Board heigth:</td>
+                    <td>@BattleShip.Brain.GameConfig.BoardSizeX</td>
+                </tr>
+                <tr>
+                    <td>Board length:</td>
+                    <td>@BattleShip.Brain.GameConfig.BoardSizeY</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</div>
+</div>

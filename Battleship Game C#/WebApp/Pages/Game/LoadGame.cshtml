@@ -1,0 +1,64 @@
+﻿@page
+@model WebApp.Pages.Game.LoadGame
+
+@{
+    ViewData["Title"] = "Load Game";
+}
+
+<div class="row">
+    <div class="col">
+        @if (LoadGame.LoadFromDb)
+        {
+            <h2>Database games</h2>
+        }
+        else
+        {
+            <h2>Local games</h2>
+        }
+    </div>
+
+    <div class="col" align="right">
+        @if (LoadGame.LoadFromDb)
+        {
+            <form method="post" asp-page-handler="ListGamesJson">
+                <button type="submit" class="btn btn-dark">List Local Files</button>
+            </form>
+        }
+        else
+        {
+            <form method="post" asp-page-handler="ListGamesDb">
+                <button type="submit" class="btn btn-dark">List Database Files</button>
+            </form>
+        }
+    </div>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Game Name</th>
+        <th scope="col">-</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @for (int i = 0; i < LoadGame.GameNames.Count; i++)
+    {
+        <tr>
+            <th scope="row">@(i + 1)</th>
+            <td>@LoadGame.GameNames[i]</td>
+            <td align="right">
+                @if (LoadGame.LoadFromDb)
+                {
+                    <button onclick="window.location.href = '/Game/BattleShip?handler=LoadGameDb&id=@(i + 1)'" class="btn btn-success">Load</button>
+                }
+                else
+                {
+                    <button onclick="window.location.href = '/Game/BattleShip?handler=LoadGameJson&id=@(i)'" class="btn btn-success">Load</button>
+                }
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>

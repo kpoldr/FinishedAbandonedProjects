@@ -1,0 +1,121 @@
+﻿@page
+@model WebApp.Pages.Game.CustomGame
+
+@{
+    ViewData["Title"] = "Custom Game";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 pt-4">
+            <h2>Game Settings:</h2>
+            <form class="p-3" asp-page-handler="CreateGame">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="gameName" class="form-label">Game Name</label>
+                        <input asp-for="GameConfigModel.GameName" type="text" id="gameName" class="form-control" required>
+                        <span class="form-text text-danger" asp-validation-for="GameConfigModel.GameName"></span>
+                        <div class="form-text">Displayed on the save file</div>
+                    </div>
+                    <div class="col-md-6 mb-3 align-middle">
+                        <label for="selectGameRule" class="form-label">Ship Placement Rule</label>
+                        <select class="form-select" name="gameRule" id="selectGameRule" aria-label="Default select example">
+                            <option selected value="0">No Touch</option>
+                            <option value="1">Corner Touch</option>
+                            <option value="2">Side Touch</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="form-label pb-1">Board diameters</label>
+                    <div class="col-md-6 mb-3 form-check">
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text">Heigth</span>
+                            @* <input type="text" class="form-control" name="boardX" aria-label="Sizing example input"> *@
+                            <input asp-for="GameConfigModel.BoardSizeX" type="text" class="form-control" required>
+                            <span class="form-text text-danger" asp-validation-for="GameConfigModel.BoardSizeX"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3 form-check">
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text">Length</span>
+                            <input asp-for="GameConfigModel.BoardSizeY" type="text" class="form-control" required>
+                            <span class="form-text text-danger" asp-validation-for="GameConfigModel.BoardSizeY"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col" align="right">
+                    <button type="submit" class="btn btn-primary">Create Game</button>
+                </div>
+                <div class="col pt-2" align="right">
+                    <a type="button" class="btn btn-danger " asp-page="/Index">Back</a>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-md-6 pt-4">
+            
+            <h2>Ships:</h2>
+
+            <form class="rounded border p-3" asp-page-handler="AddShip">
+                <div class="col-md-6 mb-1">
+                    <label for="ShipsName" class="form-label">Ship Name</label>
+                    <input name="shipName" value="@CustomGame.ShipNameValue" type="text" class="form-control" id="ShipsName" aria-describedby="emailHelp">
+                </div>
+                @if (CustomGame.ShipNameError)
+                {
+                    <span class="form-text text-danger">Ship Name cannot be empty</span>
+                }
+                <div class="row">
+                    <label class="form-label pb-1">Ship Size</label>
+                    <div class="col-md-6 mb-1 form-check">
+                        <div class="row">
+                            <div class="input-group input-group-sm">
+                                <span for="shipsHeight" class="input-group-text">Height</span>
+                                <input name="shipX" type="text" value="@CustomGame.ShipXValue" class="form-control" id="shipsHeight">
+                            </div>
+                        </div>
+
+                        @if (CustomGame.ShipXError)
+                        {
+                            <span class="form-text text-danger">Must be between 1 and 20</span>
+                        }
+
+                    </div>
+                    <div class="col-md-6 mb-1 form-check">
+                        <div class="input-group input-group-sm mb-1">
+                            <span for="shipsLength" class="input-group-text">Length</span>
+                            <input name="shipY" type="text" id="shipsLength" value="@CustomGame.ShipYValue" class="form-control" aria-describedby="Ships length">
+                        </div>
+
+                        @if (CustomGame.ShipYError)
+                        {
+                            <span class="form-text text-danger">Must be between 1 and 20</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="col" align="right">
+                    <button type="submit" class="btn btn-success">Add Ship</button>
+                </div>
+
+            </form>
+
+            @for (int i = 0; i < CustomGame.GameShips.Count; i++)
+            {
+                var ship = CustomGame.GameShips[i];
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    | @ship.Name | Height: @ship.X | Lenght: @ship.Y |
+                    <button onclick="window.location.href = '/Game/CustomGame?id=@i'" class="btn btn-danger">X</button>
+                </li>
+            }
+            <ul class="list-group">
+
+            </ul>
+
+
+        </div>
+    </div>
+</div>

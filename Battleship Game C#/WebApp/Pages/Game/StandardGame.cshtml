@@ -1,0 +1,45 @@
+﻿@page
+@model WebApp.Pages.Game.StandardGame
+
+@{
+    ViewData["Title"] = "Standard Game";
+}
+
+
+<div class="container px-4">
+    <div class="col text-center">
+    </div>
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4 p-5">
+
+                <label for="GameName" class="form-label">Game Name</label>
+                <input value="Untitled" class="form-control" id="GameName" name="Name">
+                <div class="form-text">For saving games</div>
+                
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+        </div>
+        <div class="p-4 row gx-5">
+            <div class="col text-end align-bottom">
+
+                <button asp-page-handler="RandomGame" type="submit" class="btn-lg btn-dark">Random ship placement</button>
+
+            </div>
+            <div class="col">
+
+                <button asp-page-handler="CustomGame" type="submit" class="btn-lg btn-dark">Custom ship placement</button>
+
+            </div>
+        </div>
+        <div class="col" align="center">
+            <a type="button" class="btn-lg btn-dark align-middle" asp-page="/Index">Back</a>
+        </div>
+    </form>
+</div>
