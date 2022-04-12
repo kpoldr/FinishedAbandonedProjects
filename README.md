@@ -1,6 +1,6 @@
 # Projects
 
-Projects that I have finished or discarded.
+Projects that I have either finished or discarded.
 
 Mostly school projects. 
 
