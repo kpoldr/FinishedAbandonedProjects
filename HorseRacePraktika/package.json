@@ -1,0 +1,48 @@
+{
+  "name": "vuehorserace",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview --port 5050",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "server": "nodemon ./database/server.js",
+    "start": "run-p server dev"
+  },
+  "dependencies": {
+    "@vuelidate/core": "^2.0.0-alpha.41",
+    "@vuelidate/validators": "^2.0.0-alpha.29",
+    "better-sqlite3": "^7.5.1",
+    "bootstrap": "^5.1.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.0",
+    "nodemon": "^2.0.16",
+    "npm-run-all": "^4.1.5",
+    "popper.js": "^1.16.1",
+    "simplebar": "^5.3.6",
+    "sqlite3": "^5.0.8",
+    "vue": "^3.2.33",
+    "vue-simplebar": "^2.3.0",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.0",
+    "@types/bootstrap": "^5.1.11",
+    "@types/jquery": "^3.5.14",
+    "@types/node": "^16.11.27",
+    "@vitejs/plugin-vue": "^2.3.1",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "@vue/tsconfig": "^0.1.3",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "prettier": "^2.5.1",
+    "typescript": "~4.6.3",
+    "vite": "^2.9.5",
+    "vue-class-component": "^8.0.0-rc.1",
+    "vue-tsc": "^0.34.7"
+  }
+}

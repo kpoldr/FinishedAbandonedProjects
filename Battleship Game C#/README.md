@@ -1,3 +1,2 @@
-# icd0008-2021f
+# C# schoolproject
 
-Project for icd0008
