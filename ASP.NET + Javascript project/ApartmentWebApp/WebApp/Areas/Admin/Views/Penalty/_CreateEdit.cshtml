@@ -1,0 +1,27 @@
+﻿@model WebApp.Areas.Admin.ViewModels.PenaltyCreateEditVm
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Penalty.PenaltyName" class="control-label"></label>
+    <input asp-for="Penalty.PenaltyName" class="form-control" />
+    <span asp-validation-for="Penalty.PenaltyName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Penalty.Value" class="control-label"></label>
+    <input asp-for="Penalty.Value" class="form-control" />
+    <span asp-validation-for="Penalty.Value" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Penalty.Multiplier" class="control-label"></label>
+    <input asp-for="Penalty.Multiplier" class="form-control" />
+    <span asp-validation-for="Penalty.Multiplier" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Penalty.BillId" class="control-label"></label>
+    <select asp-for="Penalty.BillId" class ="form-control" asp-items="Model!.BillSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Penalty.OwnerId" class="control-label"></label>
+    <select asp-for="Penalty.OwnerId" class ="form-control" asp-items="Model.OwnerSelectList"></select>
+</div>

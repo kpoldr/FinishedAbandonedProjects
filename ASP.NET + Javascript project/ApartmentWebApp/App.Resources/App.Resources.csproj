@@ -1,0 +1,187 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+<!--        <OutputType>Exe</OutputType>-->
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="App.Domain\EntityNames.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>EntityNames.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Apartment.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Apartment.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Association.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Association.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Bill.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Bill.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Building.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Building.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\CommonOverlap.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>CommonOverlap.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Contract.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Contract.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Fund.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Fund.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Ids.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Ids.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Owner.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Owner.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Payment.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Payment.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Penalty.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Penalty.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Person.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Person.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\Utility.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Utility.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="App.Domain\UtilityBill.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>UtilityBill.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="WebApp\Views\Shared\_Layout.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Layout.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="WebApp\Areas\Identity\Login.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Login.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="WebApp\Areas\Identity\Register.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Register.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="WebApp\Areas\Identity\RegisterError.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RegisterError.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="App.Domain\EntityNames.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>EntityNames.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Apartment.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Apartment.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Association.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Association.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Bill.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Bill.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Building.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Building.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\CommonOverlap.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>CommonOverlap.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Contract.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Contract.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Fund.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Fund.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Ids.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Ids.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Owner.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Owner.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Payment.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Payment.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Penalty.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Penalty.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Person.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Person.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\Utility.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Utility.resx</DependentUpon>
+      </Compile>
+      <Compile Update="App.Domain\UtilityBill.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>UtilityBill.resx</DependentUpon>
+      </Compile>
+      <Compile Update="WebApp\Views\Shared\_Layout.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Layout.resx</DependentUpon>
+      </Compile>
+      <Compile Update="WebApp\Areas\Identity\Login.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Login.resx</DependentUpon>
+      </Compile>
+      <Compile Update="WebApp\Areas\Identity\Register.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Register.resx</DependentUpon>
+      </Compile>
+      <Compile Update="WebApp\Areas\Identity\RegisterError.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RegisterError.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

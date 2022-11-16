@@ -1,0 +1,25 @@
+﻿@model WebApp.Areas.Admin.ViewModels.OwnerCreateEditVm
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Owner.Name" class="control-label"></label>
+                <input asp-for="Owner.Name" class="form-control" />
+                <span asp-validation-for="Owner.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner.Email" class="control-label"></label>
+                <input asp-for="Owner.Email" class="form-control" />
+                <span asp-validation-for="Owner.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner.Phone" class="control-label"></label>
+                <input asp-for="Owner.Phone" class="form-control" />
+                <span asp-validation-for="Owner.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner.AdvancedPay" class="control-label"></label>
+                <input asp-for="Owner.AdvancedPay" class="form-control" />
+                <span asp-validation-for="Owner.AdvancedPay" class="text-danger"></span>
+            </div>
+     

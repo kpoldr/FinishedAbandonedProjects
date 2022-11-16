@@ -1,0 +1,18 @@
+﻿@model WebApp.Areas.Admin.ViewModels.FundCreateEditVm
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Fund.Name" class="control-label"></label>
+    <input asp-for="Fund.Name" class="form-control" />
+    <span asp-validation-for="Fund.Name" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Fund.Value" class="control-label"></label>
+    <input asp-for="Fund.Value" class="form-control" />
+    <span asp-validation-for="Fund.Value" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Fund.AssociationId" class="control-label"></label>
+    <select asp-for="Fund.AssociationId" class ="form-control" asp-items="Model!.AssociationSelectList"></select>
+</div>

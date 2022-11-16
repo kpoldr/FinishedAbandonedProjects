@@ -1,0 +1,18 @@
+﻿@model WebApp.Areas.Admin.ViewModels.PersonCreateEditVm
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Person.Name" class="control-label"></label>
+                <input asp-for="Person.Name" class="form-control" />
+                <span asp-validation-for="Person.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Person.BoardMember" /> @Html.DisplayNameFor(model => model.Person.BoardMember)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.ApartmentId" class="control-label"></label>
+                <select asp-for="Person.ApartmentId" class ="form-control" asp-items="Model!.ApartmentSelectList"></select>
+            </div>

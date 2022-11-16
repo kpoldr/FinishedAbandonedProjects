@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  apartmentwebapp-postgres:
+    container_name: apartmentwebapp-postgres
+    image: postgres:latest
+    restart: unless-stopped
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - "5432:5432"
+    volumes:
+      - apartmentwebapp-postgres-volume:/var/lib/postgresql/data
+
+volumes:
+  apartmentwebapp-postgres-volume:
+  

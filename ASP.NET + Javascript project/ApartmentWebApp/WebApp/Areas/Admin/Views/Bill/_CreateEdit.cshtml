@@ -1,0 +1,27 @@
+﻿@model WebApp.Areas.Admin.ViewModels.BillCreateEditVM
+
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Bill.Number" class="control-label"></label>
+    <input asp-for="Bill.Number" class="form-control" />
+    <span asp-validation-for="Bill.Number" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.Date" class="control-label"></label>
+    <input asp-for="Bill.Date" class="form-control" />
+    <span asp-validation-for="Bill.Date" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.DeadLine" class="control-label"></label>
+    <input asp-for="Bill.DeadLine" class="form-control" />
+    <span asp-validation-for="Bill.DeadLine" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.ApartmentId" class="control-label"></label>
+    <select asp-for="Bill.ApartmentId" class ="form-control" asp-items="Model!.ApartmentSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Bill.OwnerId" class="control-label"></label>
+    <select asp-for="Bill.OwnerId" class ="form-control" asp-items="Model.OwnerSelectList"></select>
+</div>

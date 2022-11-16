@@ -1,0 +1,22 @@
+﻿@model WebApp.Areas.Admin.ViewModels.UtilityBillCreateEditVm
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="UtilityBill.Quantity" class="control-label"></label>
+    <input asp-for="UtilityBill.Quantity" class="form-control"/>
+    <span asp-validation-for="UtilityBill.Quantity" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="UtilityBill.Price" class="control-label"></label>
+    <input asp-for="UtilityBill.Price" class="form-control"/>
+    <span asp-validation-for="UtilityBill.Price" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="UtilityBill.UtilityId" class="control-label"></label>
+    <select asp-for="UtilityBill.UtilityId" class="form-control" asp-items="Model!.UtilitySelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="UtilityBill.BillId" class="control-label"></label>
+    <select asp-for="UtilityBill.BillId" class="form-control" asp-items="Model.BillSelectList"></select>
+</div>

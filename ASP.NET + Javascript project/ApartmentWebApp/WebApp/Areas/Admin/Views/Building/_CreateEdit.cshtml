@@ -1,0 +1,15 @@
+﻿@model WebApp.Areas.Admin.ViewModels.BuilidngCreateEditVM
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Building.Address" class="control-label"></label>
+                <input asp-for="Building.Address" class="form-control" />
+                <span asp-validation-for="Building.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Building.AssociationId" class="control-label"></label>
+                <select asp-for="Building.AssociationId" class ="form-control" asp-items="Model.AssociationSelectList"></select>
+                <span asp-validation-for="Building.AssociationId" class="text-danger"></span>
+            </div>
+

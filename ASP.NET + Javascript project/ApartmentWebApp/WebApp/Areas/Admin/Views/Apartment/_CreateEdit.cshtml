@@ -1,0 +1,26 @@
+﻿@model WebApp.Areas.Admin.ViewModels.ApartmentCreateEditVM
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="Apartment.Number" class="control-label"></label>
+    <input asp-for="Apartment.Number" class="form-control"/>
+    <span asp-validation-for="Apartment.Number" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Apartment.Floor" class="control-label"></label>
+    <input asp-for="Apartment.Floor" class="form-control"/>
+    <span asp-validation-for="Apartment.Floor" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Apartment.Size" class="control-label"></label>
+    <input asp-for="Apartment.Size" class="form-control"/>
+    <span asp-validation-for="Apartment.Size" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Apartment.OwnerId" class="control-label"></label>
+    <select asp-for="Apartment.OwnerId" class="form-control" asp-items="Model!.OwnersSelectList"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Apartment.BuildingId" class="control-label"></label>
+    <select asp-for="Apartment.BuildingId" class="form-control" asp-items="Model.BuildingSelectList"></select>
+</div>
